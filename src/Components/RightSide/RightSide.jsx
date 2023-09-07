@@ -1,4 +1,5 @@
 import Contact from "../Contact/Contact";
+import Newspaper from "../Newspaper/Newspaper";
 import QZone from "../QZone/QZone";
 
 const RightSide = () => {
@@ -6,6 +7,7 @@ const RightSide = () => {
         <div>
             <Contact></Contact>
             <QZone></QZone>
+            <Newspaper></Newspaper>
         </div>
     );
 };
