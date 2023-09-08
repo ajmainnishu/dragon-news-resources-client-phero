@@ -2,23 +2,26 @@ import { Card } from "react-bootstrap";
 import Navigation from "../Navigation/Navigation";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
     const {logIn} = useContext(AuthContext);
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/'
+    const navigate = useNavigate();
     const handleLogIn = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
         logIn(email, password)
-        .then((result) => {
-            console.log(result.user)
+        .then(() => {
             form.reset()
             toast.success('login Successfully')
+            navigate(from, {replace: true})
         }) .catch(error => {
             toast.warn(error.message)
         })
