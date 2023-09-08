@@ -5,6 +5,7 @@ import CategoryNews from "../Components/CategoryNews/CategoryNews";
 import News from "../layout/News";
 import SingleNews from "../Components/SingleNews/SingleNews";
 import Login from "../Components/Login/Login";
+import Registration from "../Components/Registration/Registration";
 
 const router = createBrowserRouter([
     {
@@ -39,8 +40,12 @@ const router = createBrowserRouter([
         ]
     },
     {
-        path: '/login',
+        path: 'login',
         element: <Login />
+    },
+    {
+        path: 'registration',
+        element:  <Registration />
     }
 ])
 
