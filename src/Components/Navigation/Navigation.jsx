@@ -1,11 +1,18 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import { useContext } from 'react';
+import { AuthContext } from '../../providers/AuthProvider';
+import Image from 'react-bootstrap/Image';
 
 const Navigation = () => {
+    const { user, logOut } = useContext(AuthContext);
+    console.log(user);
+    const handleLogOut = () => {
+        logOut();
+    }
     return (
         <Container>
             <Navbar expand="lg" className='pt-4 pb-5'>
@@ -17,7 +24,9 @@ const Navigation = () => {
                         <Link to="" className='text-decoration-none text-muted'>Career</Link>
                     </Nav>
                     <Nav className="ms-auto">
-                        <Link to='/login'><Button type="submit" className='btn btn-secondary fw-semibold px-4 rounded-0'>Login</Button></Link>
+                        {user && <Image style={{height: '41px', width: '41px'}} src={user.photoURL} className='me-2' roundedCircle />}
+                        {!user && <Link to='/login'><Button type="submit" className='btn btn-secondary fw-semibold px-4 rounded-0'>Login</Button></Link>}
+                        {user && <Button onClick={handleLogOut} type="submit" className='btn btn-secondary fw-semibold px-4 rounded-0'>Log Out</Button>}
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
