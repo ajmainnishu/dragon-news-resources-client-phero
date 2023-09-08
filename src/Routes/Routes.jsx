@@ -6,6 +6,10 @@ import News from "../layout/News";
 import SingleNews from "../Components/SingleNews/SingleNews";
 import Login from "../Components/Login/Login";
 import Registration from "../Components/Registration/Registration";
+import About from "../layout/About";
+import Career from "../Components/Career/Career";
+import EmptyPage from "../Components/EmptyPage/EmptyPage";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
     {
@@ -34,7 +38,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path:  ':id',
-                element: <SingleNews />,
+                element: <PrivateRoutes><SingleNews /></PrivateRoutes>,
                 loader: ({params}) => fetch(`http://localhost:5000/news/${params.id}`)
             }
         ]
@@ -46,6 +50,18 @@ const router = createBrowserRouter([
     {
         path: 'registration',
         element:  <Registration />
+    },
+    {
+        path: 'about',
+        element: <PrivateRoutes><About /></PrivateRoutes>
+    },
+    {
+        path: 'career',
+        element: <PrivateRoutes><Career /></PrivateRoutes>
+    },
+    {
+        path: '*',
+        element: <EmptyPage />
     }
 ])
 

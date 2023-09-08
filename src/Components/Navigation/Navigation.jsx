@@ -9,7 +9,6 @@ import Image from 'react-bootstrap/Image';
 
 const Navigation = () => {
     const { user, logOut } = useContext(AuthContext);
-    console.log(user);
     const handleLogOut = () => {
         logOut();
     }
@@ -20,8 +19,8 @@ const Navigation = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto gap-3">
                         <Link to="/" className='text-decoration-none text-muted'>Home</Link>
-                        <Link to="" className='text-decoration-none text-muted'>About</Link>
-                        <Link to="" className='text-decoration-none text-muted'>Career</Link>
+                        <Link to="/about" className='text-decoration-none text-muted'>About</Link>
+                        <Link to="/career" className='text-decoration-none text-muted'>Career</Link>
                     </Nav>
                     <Nav className="ms-auto">
                         {user && <Image style={{height: '41px', width: '41px'}} src={user.photoURL} className='me-2' roundedCircle />}
