@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import RightSide from "../Components/RightSide/RightSide";
 import LeftSide from "../Components/LeftSide/LeftSide";
+import { Outlet } from "react-router-dom";
 
 const Home = () => {
     return (
@@ -12,7 +13,7 @@ const Home = () => {
             <Container>
                 <Row>
                     <Col xs={3}><LeftSide></LeftSide></Col>
-                    <Col xs={6}></Col>
+                    <Col xs={6}><Outlet></Outlet></Col>
                     <Col xs={3}><RightSide></RightSide></Col>
                 </Row>
             </Container>
