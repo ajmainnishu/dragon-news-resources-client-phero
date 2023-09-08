@@ -32,8 +32,8 @@ const CategoryNews = () => {
                         <Card.Body>
                             <Card.Title>{cn.title}</Card.Title>
                             <Card.Img variant="top" src={cn.image_url} />
-                            <Card.Text className='mb-1'>
-                                {cn.details.length < 270 ? <>{cn.details}</> : <>{cn.details.slice(0, 270)}...<Link className='text-decoration-none fw-semibold d-block' style={{ color: '#FF8C47' }}>Read More</Link></>}
+                            <Card.Text className='mb-1 mt-4'>
+                                {cn.details.length < 270 ? <>{cn.details}</> : <>{cn.details.slice(0, 270)}...<Link to={`/news/${cn._id}`} className='text-decoration-none fw-semibold d-block' style={{ color: '#FF8C47' }}>Read More</Link></>}
                             </Card.Text>
                         </Card.Body>
                         <Card.Footer className="d-flex align-items-center justify-content-between text-muted bg-white py-3">
