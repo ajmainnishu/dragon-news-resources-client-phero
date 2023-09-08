@@ -10,7 +10,7 @@ const News = () => {
         <div>
             <Banner></Banner>
             <Container>
-                <Row>
+                <Row className="mt-5">
                     <Col xs={9}><Outlet></Outlet></Col>
                     <Col xs={3}><RightSide></RightSide></Col>
                 </Row>
