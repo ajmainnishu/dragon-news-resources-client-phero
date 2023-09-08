@@ -5,6 +5,7 @@ import { FaArrowLeft } from 'react-icons/fa';
 import EditorsInsight from "../EditorsInsight/EditorsInsight";
 
 const SingleNews = () => {
+    // single news data fetch from local server
     const news = useLoaderData();
     return (
         <div>

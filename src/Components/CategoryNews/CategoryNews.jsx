@@ -7,6 +7,7 @@ import Image from 'react-bootstrap/Image';
 import moment from 'moment';
 
 const CategoryNews = () => {
+    // categories news data fetch from local server
     const categoryNews = useLoaderData();
     return (
         <div>

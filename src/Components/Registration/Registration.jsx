@@ -17,6 +17,7 @@ const Registration = () => {
         const password = form.password.value;
         createUser(email, password)
         .then(() => {
+            // update email name and photo
             emailNamePhotoUpdate(name, photo);
             form.reset();
             toast.success('Email Successfully Registered')
