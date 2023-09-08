@@ -2,16 +2,35 @@ import { Card } from "react-bootstrap";
 import Navigation from "../Navigation/Navigation";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
 
 const Registration = () => {
+    const {createUser, emailNamePhotoUpdate} = useContext(AuthContext);
+    const handleRegistration = event => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const photo = form.photo.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        createUser(email, password)
+        .then(() => {
+            emailNamePhotoUpdate(name, photo);
+            form.reset();
+            toast('Email Successfully Registered')
+        }) .catch(error => {
+            toast(error.message);
+        })
+    }
     return (
         <div className="bg-light pb-5">
             <Navigation></Navigation>
             <Card className="p-5 w-50 mx-auto mt-5 mb-5">
                 <h2 className="text-center mb-4 text-muted">Register your account</h2>
                 <hr />
-                <Form className="mt-4">
+                <Form onSubmit={handleRegistration} className="mt-4">
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label className="fw-semibold text-muted">Your Name</Form.Label>
                         <Form.Control className="bg-light py-2" type="text" name="name" placeholder="Enter your name" />
@@ -19,7 +38,7 @@ const Registration = () => {
 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label className="fw-semibold text-muted">Photo URL</Form.Label>
-                        <Form.Control className="bg-light py-2" type="file" name="photo" />
+                        <Form.Control className="bg-light py-2" type="text" name="photo" placeholder="Enter your photo url" />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -40,6 +59,7 @@ const Registration = () => {
                     </Button>
                 </Form>
             </Card>
+            <ToastContainer />
         </div>
     );
 };
