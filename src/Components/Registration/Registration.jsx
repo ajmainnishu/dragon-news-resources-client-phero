@@ -19,9 +19,9 @@ const Registration = () => {
         .then(() => {
             emailNamePhotoUpdate(name, photo);
             form.reset();
-            toast('Email Successfully Registered')
+            toast.success('Email Successfully Registered')
         }) .catch(error => {
-            toast(error.message);
+            toast.warn(error.message);
         })
     }
     return (
